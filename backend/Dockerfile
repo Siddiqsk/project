@@ -28,6 +28,8 @@ FROM python:3.12-alpine
 WORKDIR /usr/src/app
 
 # Copy requirements.txt and install dependencies
+RUN cd project/backend
+
 COPY src/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
