@@ -19,13 +19,13 @@
 # Use lightweight Nginx base
 FROM nginx:alpine
 
-# Remove default Nginx HTML (optional)
+# Remove default Nginx HTML
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy your frontend build files to Nginx web directory
-COPY . /usr/share/nginx/html/
+# Copy build files into Nginx web directory
+COPY dist/ /usr/share/nginx/html/
 
-# Fix permissions so Nginx can read the files
+# Fix permissions
 RUN chmod -R 755 /usr/share/nginx/html
 
 # Expose port 80
@@ -33,3 +33,4 @@ EXPOSE 80
 
 # Start Nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]
+
