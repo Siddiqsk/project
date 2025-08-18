@@ -14,14 +14,19 @@
 # EXPOSE 80
 
 # # Start Nginx in the foreground
-# CMD ["nginx", "-g", "daemon off;"]
-
+# CMD ["nginx", "-g", "daemon off;"]FROM nginx:alpine
 FROM nginx:alpine
 
-# Copy all HTML files to nginx html folder
-COPY . /usr/share/nginx/html/
+# Remove default nginx files
+RUN rm -rf /usr/share/nginx/html/*
 
-# Ensure nginx can read the files
+# Copy all HTML files
+COPY ./*.html /usr/share/nginx/html/
+
+# Fix permissions for nginx user
 RUN chown -R nginx:nginx /usr/share/nginx/html && chmod -R 755 /usr/share/nginx/html
+
+
+
 
 
