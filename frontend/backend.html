@@ -76,7 +76,7 @@
 <script>
   async function saveStudent(e) {
     e.preventDefault();
-    const res = await fetch('http://a23805e4dd81246caab4cd122c0c0567-1998564976.ap-south-1.elb.amazonaws.com:5000/student', {
+    const res = await fetch('http://4.224.113.113:5000/student', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
