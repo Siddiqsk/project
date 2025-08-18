@@ -17,8 +17,11 @@
 # CMD ["nginx", "-g", "daemon off;"]
 
 FROM nginx:alpine
-COPY dist/ /usr/share/nginx/html/
-# Make sure files are readable by nginx user
-RUN chown -R nginx:nginx /usr/share/nginx/html
-RUN chmod -R 755 /usr/share/nginx/html
+
+# Copy all HTML files to nginx html folder
+COPY . /usr/share/nginx/html/
+
+# Ensure nginx can read the files
+RUN chown -R nginx:nginx /usr/share/nginx/html && chmod -R 755 /usr/share/nginx/html
+
 
