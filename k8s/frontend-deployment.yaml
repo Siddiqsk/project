@@ -16,7 +16,7 @@ spec:
       - name: frontend
         image: siddiqkesavansk/frontend-123:0.1
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -27,5 +27,5 @@ spec:
     app: frontend
   ports:
   - port: 80
-    targetPort: 8080
+    targetPort: 80
   type: LoadBalancer
